@@ -25,7 +25,6 @@ J = (1/m)*sum(transpose(-y)*log(h) - transpose(1-y)*log(1-h));
 grad = (1/m)*transpose(h -y)*X;
 
 
-
 % =============================================================
 
 end
