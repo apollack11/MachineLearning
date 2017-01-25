@@ -23,11 +23,21 @@ sigma = 0.3;
 %        mean(double(predictions ~= yval))
 %
 
-
-
-
-
-
+C_poss = [0.01; 0.03; 0.1; 0.3; 1; 3; 10; 30];
+sigma_poss = [0.01; 0.03; 0.1; 0.3; 1; 3; 10; 30];
+min_error = 1000;
+for i = 1:size(C_poss)
+    for j = 1:size(sigma_poss)
+        model = svmTrain(X, y, C_poss(i), @(x1, x2) gaussianKernel(x1, x2, sigma_poss(j))); 
+        predictions = svmPredict(model, Xval);
+        error = mean(double(predictions ~= yval));
+        if (error < min_error)
+            C = C_poss(i);
+            sigma = sigma_poss(j);
+            min_error = error;
+        end
+    end
+end
 
 % =========================================================================
 
