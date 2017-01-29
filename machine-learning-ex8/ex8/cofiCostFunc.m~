@@ -40,22 +40,21 @@ Theta_grad = zeros(size(Theta));
 %                     partial derivatives w.r.t. to each element of Theta
 %
 
-% calculate the error between X*Theta' and Y
-error = X * Theta' - Y;
-% eliminate error for cases in which user has not rated the movie
-error_factor = R .* error;
-% calculate cost
-J = sum((1/2) * sum((error_factor.^2)));
-J_reg = (lambda/2) * sum(sum(Theta.^2)) + (lambda/2) * sum(sum(X.^2));
-J = J + J_reg;
+h = X * Theta';
+eo
+J = (1/2) * sum((X * Theta' - Y).^2);
 
-% calculate gradient for each term
-X_grad = error_factor * Theta;
-X_grad_reg = lambda .* X;
-X_grad = X_grad + X_grad_reg;
-Theta_grad = error_factor' * X;
-Theta_grad_reg = lambda .* Theta;
-Theta_grad = Theta_grad + Theta_grad_reg;
+
+
+
+
+
+
+
+
+
+
+
 
 
 % =============================================================

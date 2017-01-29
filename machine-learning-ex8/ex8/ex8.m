@@ -102,7 +102,7 @@ pause;
 load('ex8data2.mat');
 
 %  Apply the same steps to the larger dataset
-[mu sigma2] = estimateGaussian(X);
+[mu, sigma2] = estimateGaussian(X);
 
 %  Training set 
 p = multivariateGaussian(X, mu, sigma2);
@@ -111,7 +111,7 @@ p = multivariateGaussian(X, mu, sigma2);
 pval = multivariateGaussian(Xval, mu, sigma2);
 
 %  Find the best threshold
-[epsilon F1] = selectThreshold(yval, pval);
+[epsilon, F1] = selectThreshold(yval, pval);
 
 fprintf('Best epsilon found using cross-validation: %e\n', epsilon);
 fprintf('Best F1 on Cross Validation Set:  %f\n', F1);
